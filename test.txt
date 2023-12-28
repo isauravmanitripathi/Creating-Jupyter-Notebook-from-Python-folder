@@ -1,0 +1,11 @@
+i want you to write a python program which does the following things:
+1. Ask for a path to a folder
+2. Read all files inside the folder
+3. Then find only the python file just the .py file. Nothing else.
+4. After that it reads through those python file systematically.
+5. Extract all of the functions and classes from the python file.
+6. Then we start putting those extracted function into a code cell inside the jupyter notebook.
+7. It does this for all files only python file.
+8. It stores the notebook in the same folder
+
+Do you understand?
