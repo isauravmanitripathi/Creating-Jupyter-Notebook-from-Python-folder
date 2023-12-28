@@ -1,3 +1,18 @@
+"""
+This script processes Python source files within a specified directory and its subdirectories,
+creating a Jupyter notebook that compiles the content from these files. It is particularly
+effective for assembling the contents of multiple Python files into a single notebook for
+review or documentation purposes.
+
+Main functions and features:
+- Traverses the specified directory and its subdirectories to locate Python files.
+- Extracts the content from each Python file.
+- Removes single-line and multi-line comments and docstrings from the extracted content for clarity.
+- Assembles the cleaned content into a Jupyter notebook, with each file's content in a separate cell.
+- Prompts user interaction to confirm processing of each directory.
+- Creates a notebook file in the specified directory with the compiled content.
+"""
+
 import os
 import nbformat as nbf
 import re
