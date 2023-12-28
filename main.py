@@ -1,8 +1,21 @@
+"""
+This script is designed to process Python source files in a specified directory (and its subdirectories),
+extracting functions and classes from these files. It then assembles these extracted code snippets
+into a Jupyter notebook. The script removes comments and docstrings from the extracted code for clarity.
+It's useful for consolidating and reviewing code from multiple files in a single notebook,
+especially for documentation or educational purposes.
+
+Key features:
+- Traverses a specified directory and its subdirectories.
+- Extracts functions and classes from Python files using AST (Abstract Syntax Tree) parsing.
+- Removes comments and docstrings from the extracted code.
+- Compiles the extracted code into a Jupyter notebook, with each snippet in a separate cell.
+- Allows user interaction to choose which directories to process.
+"""
 import os
 import ast
 import nbformat as nbf
 import re
-
 
 def remove_comments_and_docstrings(source_code):
     """
@@ -20,10 +33,11 @@ def remove_comments_and_docstrings(source_code):
 
     return source_code
 
-
 def extract_functions_and_classes_from_file(file_path):
     """
     Extracts functions and classes from a given Python file using AST.
+    This function opens the file, reads its content, and then parses it using AST.
+    It returns a list of functions and classes, excluding comments and docstrings.
     """
     with open(file_path, 'r') as file:
         node = ast.parse(file.read())
@@ -38,10 +52,11 @@ def extract_functions_and_classes_from_file(file_path):
 
     return functions_and_classes
 
-
 def create_notebook_from_python_files(folder_path):
     """
     Creates a Jupyter notebook from Python files in the given folder and subfolders.
+    This function walks through the folder structure, asking the user whether to process each folder.
+    It then extracts functions and classes from each Python file and adds them to the notebook.
     """
     nb = nbf.v4.new_notebook()
     code_cell_count = 0  # Counter for code cells
@@ -70,7 +85,6 @@ def create_notebook_from_python_files(folder_path):
 
     print(f"Total number of code cells created: {code_cell_count}")
     return nb
-
 
 # Ask the user to enter the path to the folder
 folder_path = input("Enter the path to your folder: ")
